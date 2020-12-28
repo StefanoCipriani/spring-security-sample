@@ -32,6 +32,22 @@ CREATE TABLE USER_ROLE(
 	REFERENCES role(id)
 );
 
+create table oauth_access_token (
+	token_id varchar(255) NOT NULL,
+	token blob,
+	authentication_id varchar(255) DEFAULT NULL, 
+	user_name varchar(255) DEFAULT NULL, 
+	client_id varchar(255) DEFAULT NULL, 
+	authentication blob,
+	refresh_token varchar(255) DEFAULT NULL, 
+PRIMARY KEY (token_id));
+
+create table oauth_refresh_token ( 
+	token_id varchar(255) NOT NULL,
+	token blob,
+	authentication blob,
+PRIMARY KEY (token_id));
+
 insert into user(first_name,last_name,email,password) values ('doug','bailey','doug@bailey.com','$2a$10$U2STWqktwFbvPPsfblVeIuy11vQ1S/0LYLeXQf1ZL0cMXc9HuTEA2');
 insert into user(first_name,last_name,email,password) values ('john','ferguson','john@ferguson.com','$2a$10$YzcbPL.fnzbWndjEcRkDmO1E4vOvyVYP5kLsJvtZnR1f8nlXjvq/G');
 
